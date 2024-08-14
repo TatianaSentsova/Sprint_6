@@ -11,27 +11,31 @@ class OrderPageScooter:
         self.driver = driver
 
     def wait_order_page_loading(self):
-        locator = LocatorsOrderPageScooter.header_order_form_about_user
-        WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(locator))
+        locator = LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER
+        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(locator))
 
     def check_order_form(self):
-        locator = LocatorsOrderPageScooter.header_order_form_about_user
-        assert self.driver.find_element(*locator).is_displayed()
+        locator = LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER
+        assert self.driver.find_element(*locator).is_displayed
+
+    def click_click_on_scooter_logo(self):
+        locator = LocatorsOrderPageScooter.SCOOTER_LOGO
+        self.driver.find_element(*locator).click()
 
     def set_first_name(self, first_name):
-        locator = LocatorsOrderPageScooter.first_name_field
+        locator = LocatorsOrderPageScooter.FIRST_NAME_FIELD
         self.driver.find_element(*locator).send_keys(first_name)
 
     def set_last_name(self, last_name):
-        locator = LocatorsOrderPageScooter.last_name_field
+        locator = LocatorsOrderPageScooter.LAST_NAME_FIELD
         self.driver.find_element(*locator).send_keys(last_name)
 
     def set_address(self, address):
-        locator = LocatorsOrderPageScooter.address_field
+        locator = LocatorsOrderPageScooter.ADDRESS_FIELD
         self.driver.find_element(*locator).send_keys(address)
 
     def select_station_subway(self):
-        locator = LocatorsOrderPageScooter.station_subway_field
+        locator = LocatorsOrderPageScooter.STATION_SUBWAY_FIELD
         self.driver.find_element(*locator).click()
         station_subway = random.choice(Data.STATION_SUBWAY)
         locator_list = LocatorsOrderPageScooter.choose_station_subway(station_subway)
@@ -39,11 +43,11 @@ class OrderPageScooter:
 
     def set_phone_number(self):
         phone_number = Utils.generation_phone_number()
-        locator = LocatorsOrderPageScooter.phone_number_field
+        locator = LocatorsOrderPageScooter.PHONE_NUMBER_FIELD
         self.driver.find_element(*locator).send_keys(phone_number)
 
     def click_order_next_button(self):
-        locator = LocatorsOrderPageScooter.order_next_button
+        locator = LocatorsOrderPageScooter.ORDER_NEXT_BUTTON
         self.driver.find_element(*locator).click()
 
     def set_form_about_user(self, first_name, last_name, address):
@@ -55,11 +59,11 @@ class OrderPageScooter:
         self.click_order_next_button()
 
     def set_date(self, date):
-        locator = LocatorsOrderPageScooter.date_field
+        locator = LocatorsOrderPageScooter.DATE_FIELD
         self.driver.find_element(*locator).send_keys(date)
 
     def set_rental_period(self):
-        locator = LocatorsOrderPageScooter.rental_period_field
+        locator = LocatorsOrderPageScooter.RENTAL_PERIOD_FIELD
         self.driver.find_element(*locator).click()
         period = random.choice(Data.PERIOD_RENTAL)
         locator_period = LocatorsOrderPageScooter.choose_rental_period(period)
@@ -76,11 +80,10 @@ class OrderPageScooter:
         self.choose_color_scooter()
 
     def make_order(self):
-        self.driver.find_element(*LocatorsOrderPageScooter.order_button).click()
-        self.driver.find_element(*LocatorsOrderPageScooter.yes_button).click()
+        self.driver.find_element(*LocatorsOrderPageScooter.ORDER_BUTTON).click()
+        self.driver.find_element(*LocatorsOrderPageScooter.YES_BUTTON).click()
 
     def check_order_success_message(self):
-        locator = LocatorsOrderPageScooter.order_success_message
+        locator = LocatorsOrderPageScooter.ORDER_SUCCESS_MESSAGE
         WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(locator))
-        element = self.driver.find_element(*locator)
-        assert element.is_displayed()
+        assert self.driver.find_element(*locator).is_displayed

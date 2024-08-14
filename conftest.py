@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from landing_page_scooter import LandingPageScooter
-from order_page_skooter import OrderPageScooter
+from order_page_scooter import OrderPageScooter
 from testdata import ApplicationData
 
 
