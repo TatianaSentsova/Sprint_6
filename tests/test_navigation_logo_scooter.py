@@ -13,4 +13,5 @@ class TestNavigationLogoScooter:
         landing_page.click_header_order_button()
         order_page.wait_order_page_loading()
         order_page.click_click_on_scooter_logo()
-        landing_page.check_scooter_png()
+        element = landing_page.get_scooter_png()
+        assert element.is_displayed

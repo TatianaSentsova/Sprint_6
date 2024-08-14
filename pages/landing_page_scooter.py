@@ -15,10 +15,10 @@ class LandingPageScooter:
         locator = LocatorsLandingPageScooter.YANDEX_LOGO
         self.driver.find_element(*locator).click()
 
-    def check_scooter_png(self):
+    def get_scooter_png(self):
         locator = LocatorsLandingPageScooter.SCOOTER_PNG
         WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(locator))
-        assert self.driver.find_element(*locator).is_displayed
+        return self.driver.find_element(*locator)
 
     def scroll_question(self, index):
         element = self.driver.find_element(*LocatorsLandingPageScooter.get_question_locator(index))
@@ -52,7 +52,7 @@ class LandingPageScooter:
         element = self.driver.find_element(*LocatorsLandingPageScooter.PRIMARY_ORDER_BUTTON)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    def wait_primary_order_button(self, index):
+    def wait_primary_order_button(self, ):
         locator = LocatorsLandingPageScooter.PRIMARY_ORDER_BUTTON
         WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
 

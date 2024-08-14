@@ -14,9 +14,9 @@ class OrderPageScooter:
         locator = LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER
         WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(locator))
 
-    def check_order_form(self):
+    def get_order_form(self):
         locator = LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER
-        assert self.driver.find_element(*locator).is_displayed
+        return self.driver.find_element(*locator)
 
     def click_click_on_scooter_logo(self):
         locator = LocatorsOrderPageScooter.SCOOTER_LOGO
@@ -83,7 +83,7 @@ class OrderPageScooter:
         self.driver.find_element(*LocatorsOrderPageScooter.ORDER_BUTTON).click()
         self.driver.find_element(*LocatorsOrderPageScooter.YES_BUTTON).click()
 
-    def check_order_success_message(self):
+    def get_order_success_message(self):
         locator = LocatorsOrderPageScooter.ORDER_SUCCESS_MESSAGE
         WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(locator))
-        assert self.driver.find_element(*locator).is_displayed
+        return self.driver.find_element(*locator)
