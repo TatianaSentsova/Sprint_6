@@ -1,14 +1,16 @@
 import pytest
+import allure
 from utils import Utils
-from testdata import Data
+from testdata import Answers
 
 
 class TestListQuestionsAboutImportant:
-    @pytest.mark.parametrize('index, text_answer', Utils.enumerated(Data.ANSWER))
+    @allure.title('Тестируем вопрос-ответ')
+    @allure.description('Проверяем, что для каждого вопроса открывается соотвествующий ответ')
+    @pytest.mark.parametrize('index, text_answer', Utils.enumerated(Answers.ANSWER))
     def test_answer(self, landing_page, index, text_answer):
         landing_page.click_cookie_button()
         landing_page.scroll_question(index)
-        landing_page.wait_question_button(index)
         landing_page.click_question_button(index)
         landing_page.wait_answer(index)
         landing_page.check_answer(index)
