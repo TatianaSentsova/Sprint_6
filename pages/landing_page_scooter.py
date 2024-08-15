@@ -12,10 +12,6 @@ class LandingPageScooter(BasePage):
     def click_yandex_logo(self):
         self.click_element(LandingPageLocators.YANDEX_LOGO)
 
-    @allure.step('Находим картинку самоката на лендинге')
-    def get_scooter_png(self):
-        self.find_and_wait_element_until_visible(LandingPageLocators.SCOOTER_PNG)
-
     @allure.step('Скроллим страницу до нужного вопроса')
     def scroll_question(self, index):
         self.scroll_to_element(LandingPageLocators.get_question_locator(index))

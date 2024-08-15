@@ -11,7 +11,7 @@ class OrderPageScooter(BasePage):
     def wait_order_page_loading(self):
         self.find_and_wait_element_until_visible(LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER)
 
-    @allure.step('Находим заголовок формы заказа')
+    @allure.step('Получаем текст заголовка формы заказа')
     def get_header_order_form_text(self):
         return self.get_element_text(LocatorsOrderPageScooter.HEADER_ORDER_FORM_ABOUT_USER)
 
@@ -81,7 +81,7 @@ class OrderPageScooter(BasePage):
         self.click_element(LocatorsOrderPageScooter.ORDER_BUTTON)
         self.click_element(LocatorsOrderPageScooter.CONFIRM_BUTTON)
 
-    @allure.step('Находим сообщение об оформлении заказа')
+    @allure.step('Получаем текст сообщения об оформлении заказа')
     def get_order_success_message_text(self):
         self.find_and_wait_element_until_clickable(LocatorsOrderPageScooter.ORDER_SUCCESS_MESSAGE)
         return self.get_element_text(LocatorsOrderPageScooter.ORDER_SUCCESS_MESSAGE)
