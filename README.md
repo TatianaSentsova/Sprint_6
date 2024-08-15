@@ -5,3 +5,4 @@
 pip install -r requirements.txt
 ```  
 3. Команда для запуска тестов `pytest -v tests`
+4. Команда для просмотра отчета `allure serve allure_results `
