@@ -13,6 +13,5 @@ class TestListQuestionsAboutImportant:
         landing_page.scroll_question(index)
         landing_page.click_question_button(index)
         landing_page.wait_answer(index)
-        landing_page.check_answer(index)
         actually_value = landing_page.get_answer_text(index)
         assert actually_value == text_answer, f'Ожидалось значение: "{text_answer}"'

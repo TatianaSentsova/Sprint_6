@@ -1,27 +1,27 @@
 import pytest
 import allure
 from selenium import webdriver
-from landing_page_scooter import LandingPageScooter
-from order_page_scooter import OrderPageScooter
 from testdata import ApplicationData
+from pages.landing_page_scooter import LandingPageScooter
+from pages.order_page_scooter import OrderPageScooter
 
 
-@allure.step('Инициализируем драйвер и переходим на страницу Самоката')
-@pytest.fixture(scope='function')
+@allure.step('Инициализируем драйвер')
+@pytest.fixture
 def driver():
     driver = webdriver.Firefox()
-    driver.get(ApplicationData.SCOOTER_URL)
     yield driver
     driver.quit()
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture
 def landing_page(driver):
     landing_page = LandingPageScooter(driver)
+    landing_page.get_url(ApplicationData.SCOOTER_URL)
     return landing_page
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture
 def order_page(driver):
     order_page = OrderPageScooter(driver)
     return order_page
