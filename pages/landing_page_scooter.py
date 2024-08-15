@@ -35,6 +35,7 @@ class LandingPageScooter(BasePage):
 
     @allure.step('Скроллим до кнопки "Заказать" в основной части лендинга')
     def scroll_primary_order_button(self,):
+        self.find_and_wait_element_until_clickable(LandingPageLocators.PRIMARY_ORDER_BUTTON)
         self.scroll_to_element(LandingPageLocators.PRIMARY_ORDER_BUTTON)
 
     @allure.step('Ожидаем, когда кнопка "Заказать" появится на странице и кликаем по ней')
